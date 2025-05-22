@@ -16,8 +16,7 @@ export class CarsController {
 		console.log({
 			id
 		});
-		return  {
-			id
-		}
+		console.log("🚀 ~ coche :", this.cars[id] ?? 'No existe ese id del coche');
+		return this.cars[id] ?? 'No existe ese id del coche';
 	}
 }
