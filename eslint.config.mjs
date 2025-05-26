@@ -30,8 +30,7 @@ export default tseslint.config(
       '@typescript-eslint/no-floating-promises': 'off',
       '@typescript-eslint/no-unsafe-argument': 'off',
 			'@typescript-eslint/interface-name-prefix': 'off',
-			'@typescript-eslint/explicit-function-return-type': 'off',
-			'@typescript-eslint/explicit-module-boundary-types': 'off',
+			"prettier/prettier": ["error", { "endOfLine": "off" }]
     },
   },
 );
