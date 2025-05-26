@@ -40,7 +40,7 @@ describe('CarsController', () => {
 
   describe('getCarById', () => {
     it('should return the car by id if it exists', () => {
-      const id = '1'; // Index 1 corresponds to 'Toyota'
+      const id = 1 ; // Index 1 corresponds to 'Toyota'
       expect(controller.getCarById(id)).toEqual({
         "id": 1,
         "name": "Nissan"
@@ -48,7 +48,7 @@ describe('CarsController', () => {
     });
 
     it('should return a message if the car id does not exist', () => {
-      const id = '10'; // Index 10 does not exist
+      const id = 10; // Index 10 does not exist
       expect(controller.getCarById(id)).toEqual('No existe ese id del coche');
     });
   });

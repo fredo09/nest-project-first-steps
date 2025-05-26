@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { CarsService } from './cars.service';
 
 @Controller('cars') //! -> decorador para indicar que es un controlador
@@ -13,12 +13,9 @@ export class CarsController {
 	}
 
 	//! @Params -> decorador para recibir un parametro en la url endPoint
-	@Get(':id')
-	getCarById( @Param('id') id: string) {
-		console.log({
-			id
-		});
-		console.log("🚀 ~ coche :", this.carsService.findOneById(+id) ?? 'No existe ese id del coche');
-		return this.carsService.findOneById(+id) ?? 'No existe ese id del coche';
+	@Get(':id') //! -> Agregamos el ParseIntPipe para definir un parametro de tipo entero y si no cumple nos regresa un error de 400
+	getCarById( @Param('id', ParseIntPipe) id: number) {
+		console.log({ id });
+		return this.carsService.findOneById(id) ?? 'No existe ese id del coche';
 	}
 }
