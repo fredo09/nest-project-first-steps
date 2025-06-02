@@ -9,10 +9,13 @@ import {
 	ParseIntPipe,
 	ParseUUIDPipe,
 	Patch,
-	Post 
+	Post, 
+	UsePipes,
+	ValidationPipe
 } from '@nestjs/common';
 
 @Controller('cars') //! -> decorador para indicar que es un controlador
+//@UsePipes( ValidationPipe ) //! -> Al poner el decorador a nivel de clase "controller" se aplica a todos los metodos de este controlador, es decir, que todos los metodos de este controlador van a usar el pipe de validación y aplicamos el principo "DRY" (Don't Repeat Yourself), ademas se utilizar esto a nivel global
 export class CarsController {
 
 	constructor(private readonly carsService: CarsService){}
@@ -32,6 +35,7 @@ export class CarsController {
 	}
 
 	@Post() //! -> decorador para indicar que este servicio sera de un tipo post
+	//@UsePipes( ValidationPipe )// ! -> decorador para usar un pipe de validación, ademas no es bueno ponerlo a nivel de metodo ya que se puede reutilizar "copiar y pegar" la misma intruccion en varios metodos
 	createCar(@Body() createCarDto: CreateCarDto) {
 		console.log("🚀 ~ hemos recivido del body: ", createCarDto);
 		return {
