@@ -45,12 +45,12 @@ export class CarsController {
 		}
 	}
 
-	@Patch('/:id')
+	@Patch(':id')
 	updateCar( @Param('id', ParseIntPipe) id: number, @Body() body: any) {
 		return {body, id};
 	}
 
-	@Delete('/:id')
+	@Delete(':id')
 	deleteCar(@Param('id', ParseIntPipe) id: number) {
 		return {
 			method: 'DELETE',
