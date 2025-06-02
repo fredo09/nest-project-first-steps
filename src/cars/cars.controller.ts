@@ -31,7 +31,7 @@ export class CarsController {
 
 	@Patch('/:id')
 	updateCar( @Param('id', ParseIntPipe) id: number, @Body() body: any) {
-		return body;
+		return {body, id};
 	}
 
 	@Delete('/:id')
