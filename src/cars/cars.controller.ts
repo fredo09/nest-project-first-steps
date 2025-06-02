@@ -1,5 +1,16 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, ParseUUIDPipe, Patch, Post } from '@nestjs/common';
 import { CarsService } from './cars.service';
+import { CreateCarDto } from './dtos/create-car.dto';
+import { 
+	Body, 
+	Controller,
+	Delete,
+	Get,
+	Param, 
+	ParseIntPipe,
+	ParseUUIDPipe,
+	Patch,
+	Post 
+} from '@nestjs/common';
 
 @Controller('cars') //! -> decorador para indicar que es un controlador
 export class CarsController {
@@ -21,11 +32,12 @@ export class CarsController {
 	}
 
 	@Post() //! -> decorador para indicar que este servicio sera de un tipo post
-	createCar(@Body() body: any) {
-		console.log("🚀 ~ hemos recivido del body: ", body);
+	createCar(@Body() createCarDto: CreateCarDto) {
+		console.log("🚀 ~ hemos recivido del body: ", createCarDto);
 		return {
 			ok: true,
 			method: 'POST',
+			createCarDto
 		}
 	}
 

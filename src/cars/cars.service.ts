@@ -7,15 +7,18 @@ export class CarsService {
 	private cars: CarI[] = [
 		{
 			id: uuid(), //* Genera un ID único para cada coche,
-			model: 'Toyota'
+			model: 'Toyota',
+			brand: 'Toyota'
 		},
 		{
 			id: uuid(),
-			model: 'Nissan'
+			model: 'Nissan',
+			brand: 'Nissan'
 		},
 		{
 			id: uuid(),
-			model: 'Jeep'
+			model: 'Jeep',
+			brand: 'Jeep'
 		}
 	];
 
