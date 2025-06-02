@@ -1,19 +1,21 @@
+import { v4 as uuid } from 'uuid';
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { CarI } from './interfaces/car.interface';
 
 @Injectable() //! decorador para indicar que se puede inyectar esta clase como dependencia
 export class CarsService {
-	private cars = [
+	private cars: CarI[] = [
 		{
-			id: 0,
-			name: 'Toyota'
+			id: uuid(), //* Genera un ID único para cada coche,
+			model: 'Toyota'
 		},
 		{
-			id: 1,
-			name: 'Nissan'
+			id: uuid(),
+			model: 'Nissan'
 		},
 		{
-			id: 2,
-			name: 'Jeep'
+			id: uuid(),
+			model: 'Jeep'
 		}
 	];
 
@@ -21,7 +23,7 @@ export class CarsService {
 		return this.cars;
 	}
 
-	findOneById(id: number) {
+	findOneById(id: string) {
 		const findCard = this.cars.find(car => car.id === id);
 
 		if (!findCard) 
