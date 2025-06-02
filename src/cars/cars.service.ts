@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 
 @Injectable() //! decorador para indicar que se puede inyectar esta clase como dependencia
 export class CarsService {
@@ -22,6 +22,11 @@ export class CarsService {
 	}
 
 	findOneById(id: number) {
-		return this.cars.find(car => car.id === id)
+		const findCard = this.cars.find(car => car.id === id);
+
+		if (!findCard) 
+			throw new NotFoundException(`Card with id '${id}' not found`);
+		
+		return findCard;
 	}
 }

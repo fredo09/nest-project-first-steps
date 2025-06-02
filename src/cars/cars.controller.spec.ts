@@ -48,8 +48,8 @@ describe('CarsController', () => {
     });
 
     it('should return a message if the car id does not exist', () => {
-      const id = 10; // Index 10 does not exist
-      expect(controller.getCarById(id)).toEqual('No existe ese id del coche');
+      const id = 23; // Index 10 does not exist
+      expect(controller.getCarById(id)).toEqual("Card with id '23' not found");
     });
   });
 });
