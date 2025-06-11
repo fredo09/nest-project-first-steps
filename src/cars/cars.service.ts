@@ -1,7 +1,8 @@
 import { v4 as uuid } from 'uuid';
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { CarI } from './interfaces/car.interface';
 import { CreateCarDto } from './dtos/create-car.dto';
+import { UpdateCarDto } from './dtos/update-car.dto';
 
 @Injectable() //! decorador para indicar que se puede inyectar esta clase como dependencia
 export class CarsService {
@@ -44,5 +45,28 @@ export class CarsService {
 		this.cars.push(newCar);
 		
 		return newCar;
+	}
+
+	update(id: string, updateCarDto: UpdateCarDto) {
+		let carDB = this.findOneById(id);
+
+		if ( updateCarDto.id && updateCarDto.id !== id )
+			throw new BadRequestException(`Car id is not valid`);
+
+		this.cars = this.cars.map((car) => {
+			if (car.id === id) {
+				//! Sobreescibimos los valores del car usando el spread operator 
+				carDB = {
+					...carDB,
+					...updateCarDto, //! Actualizamos los valores del car "hasCarDB" con updateCarDto 
+					id
+				}
+				return carDB;
+			}
+
+			return car;
+		});
+
+		return carDB;
 	}
 }
