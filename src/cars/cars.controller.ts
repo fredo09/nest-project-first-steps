@@ -41,7 +41,7 @@ export class CarsController {
 		return {
 			ok: true,
 			method: 'POST',
-			createCarDto
+			newCar: this.carsService.create(createCarDto)
 		}
 	}
 
