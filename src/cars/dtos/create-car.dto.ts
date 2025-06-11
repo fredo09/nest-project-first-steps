@@ -7,7 +7,7 @@
 import { IsString } from "class-validator";
 
 export class CreateCarDto {
-	@IsString({ message: `Este no cumpple con las reglas de modelo` }) //* -> Pipe para validar que el model sea una cadena de texto
+	@IsString({ message: `Este no cumple con las reglas de modelo 😱 ` }) //* -> Pipe para validar que el model sea una cadena de texto
 	readonly model: string;
 
 	@IsString()
