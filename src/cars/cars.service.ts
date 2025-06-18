@@ -7,21 +7,21 @@ import { UpdateCarDto } from './dtos/update-car.dto';
 @Injectable() //! decorador para indicar que se puede inyectar esta clase como dependencia
 export class CarsService {
 	private cars: CarI[] = [
-		{
-			id: uuid(), //* Genera un ID único para cada coche,
-			model: 'Toyota',
-			brand: 'Toyota'
-		},
-		{
-			id: uuid(),
-			model: 'Nissan',
-			brand: 'Nissan'
-		},
-		{
-			id: uuid(),
-			model: 'Jeep',
-			brand: 'Jeep'
-		}
+		// {
+		// 	id: uuid(), //* Genera un ID único para cada coche,
+		// 	model: 'Toyota',
+		// 	brand: 'Toyota'
+		// },
+		// {
+		// 	id: uuid(),
+		// 	model: 'Nissan',
+		// 	brand: 'Nissan'
+		// },
+		// {
+		// 	id: uuid(),
+		// 	model: 'Jeep',
+		// 	brand: 'Jeep'
+		// }
 	];
 
 	findAll() {
@@ -74,5 +74,9 @@ export class CarsService {
 		let carDB = this.findOneById(id);
 		this.cars = this.cars.filter(car => car.id !== id);
 		return carDB;
+	}
+
+	fillCardsWithSeedData(cars: CarI[]) {
+		this.cars = cars;
 	}
 }
